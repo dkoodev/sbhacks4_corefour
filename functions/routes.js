@@ -1,6 +1,19 @@
 const express = require('express');
 const router = express.Router();
+var firebase = require('firebase-admin');
 // const firebaseMiddleware = require('express-firebase-middleware');
+
+// Set the configuration for your app
+// Initialize Firebase
+var serviceAccount = require('./sbhacks-corefour-firebase-adminsdk-qict0-9ef440dd5c.json');
+
+firebase.initializeApp({
+  credential: firebase.credential.cert(serviceAccount),
+  databaseURL: 'https://sbhacks-corefour.firebaseio.com'
+});
+
+// Get a reference to the database service
+var database = firebase.database();
 
 router.use((req, res, next) => {
     next();
@@ -20,7 +33,7 @@ router.get('/', (req, res) => {
 router.get('/hello', (req, res) => {
     res.json({
         // message: `You're logged in as ${res.locals.user.email} with Firebase UID: ${res.locals.user.uid}`
-        message: `You're logged in aswith Firebase UID:`
+        message: `Hello there, user!`
     });
 });
 
@@ -43,9 +56,16 @@ router.get('/form',(req, res)=>{
 });
 
 // Example of POST request handling
-router.post('/form', (req, res)=>{
+router.post('/report', (req, res)=>{
     // req.body.[name attribute of input tag] has the value
-    res.send(""); // Must send back something or else post request doesn't end on front end
+    function writeUserData(data) {
+      firebase.database().ref('/').set({
+        color: data
+      });
+    }
+    writeUserData(req.body.report);
+
+    res.send("You have the following data: " + req.body.report); // Must send back something or else post request doesn't end on front end
 });
 
 module.exports = router;
