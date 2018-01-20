@@ -19,7 +19,6 @@ router.use((req, res, next) => {
     next();
 });
 
-
 // Authentication
 // router.use('/auth', firebaseMiddleware.auth);
 
@@ -29,12 +28,10 @@ router.get('/', (req, res) => {
     });
 });
 
-
-router.get('/hello', (req, res) => {
-    res.json({
-        // message: `You're logged in as ${res.locals.user.email} with Firebase UID: ${res.locals.user.uid}`
-        message: `Hello there, user!`
-    });
+router.get('/map', (req, res) => {
+  res.json({
+      message: `Hello there, user!`
+  });
 });
 
 router.get('/form',(req, res)=>{
@@ -55,6 +52,13 @@ router.get('/form',(req, res)=>{
     ')
 });
 
+router.get('/hello', (req, res) => {
+    res.json({
+        // message: `You're logged in as ${res.locals.user.email} with Firebase UID: ${res.locals.user.uid}`
+        message: `Hello there, user!`
+    });
+});
+
 // Example of POST request handling
 router.post('/report', (req, res)=>{
     // req.body.[name attribute of input tag] has the value
@@ -64,8 +68,7 @@ router.post('/report', (req, res)=>{
       });
     }
     writeUserData(req.body.report);
-
-    res.send("You have the following data: " + req.body.report); // Must send back something or else post request doesn't end on front end
+    console.log("You submitted the following data: ",req.body.report); // Must send back something or else post request doesn't end on front end
 });
 
 module.exports = router;
