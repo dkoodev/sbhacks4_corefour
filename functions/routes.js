@@ -3,14 +3,6 @@ const router = express.Router();
 var firebase = require('firebase-admin');
 // const firebaseMiddleware = require('express-firebase-middleware');
 
-
-
-
-
-// const storage = require('./database');
-
-
-
 router.use((req, res, next) => {
     next();
 });
@@ -55,8 +47,15 @@ router.get('/hello', (req, res) => {
     });
 });
 
-// Example of POST request handling
+// POST: report
 router.post('/report', (req, res)=>{
+    let name = req.body.name;
+    let description = req.body.description;
+    let lat = req.body.lat;
+    let lng = req.body.lng;
+    let severity = req.body.severity;
+    
+    // name, description, lat/long, time, suspicion, severity(possible immediate attention required), image
     // req.body.[name attribute of input tag] has the value
     function writeUserData(data) {
       firebase.database().ref('/').set({
