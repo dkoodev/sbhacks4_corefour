@@ -53,8 +53,9 @@ router.post('/report', (req, res)=>{
     let description = req.body.description;
     let lat = req.body.lat;
     let lng = req.body.lng;
+    let time = req.body.time;
     let severity = req.body.severity;
-    
+
     // name, description, lat/long, time, suspicion, severity(possible immediate attention required), image
     // req.body.[name attribute of input tag] has the value
     function writeUserData(data) {
