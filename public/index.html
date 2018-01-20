@@ -47,7 +47,13 @@
     <h1>Welcome to My Awesome App</h1>
     <div id="firebaseui-auth-container"></div>
     <form action="https://us-central1-sbhacks-corefour.cloudfunctions.net/api/report" method="post">
-      Please enter data to be uploaded <input type="text" name="report"/>
+      USER ID <input type="text" name="user"/><br/>
+      INCIDENT NAME <input type="text" name="name"/><br/>
+      INCIDENT DESCRIPTION <input type="text" name="description"/><br/>
+      INCIDENT LAT <input type="text" name="lat"/><br/>
+      INCIDENT LNG <input type="text" name="lng"/><br/>
+      INCIDENT TIME <input type="text" name="time"/><br/>
+      INCIDENT SEVERITY (haven't implemented this yet) <input type="text" name="severity"/><br/>
       <input type="submit" name="submit">
     </form>
   </body>
