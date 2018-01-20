@@ -2,9 +2,9 @@
   "name": "neighbor_watch",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,8 +20,12 @@
   "dependencies": {
     "express": "^4.16.2",
     "firebase": "^4.9.0",
+    "firebase-admin": "^5.8.1",
     "firebase-tools": "^3.17.3",
     "node": "^9.4.0",
-    "nodemon": "^1.14.11"
+    "nodemon": "^1.14.11",
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "express-firebase-middleware": "^2.0.0"
   }
 }
