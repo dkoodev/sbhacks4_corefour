@@ -16,3 +16,12 @@ app.use('/', router);
 app.listen(port, host);
 
 console.log(`Server listening at ${host}:${port}`);
+
+const ref = require('./database');
+
+// Attach an asynchronous callback to read the data at our posts reference
+ref.on("value", function(snapshot) {
+  console.log(snapshot.val());
+}, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
