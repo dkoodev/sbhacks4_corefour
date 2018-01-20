@@ -46,7 +46,7 @@
          Your app may use that space for branding, controls and other customizations.-->
     <h1>Welcome to My Awesome App</h1>
     <div id="firebaseui-auth-container"></div>
-    <form action="https://us-central1-sbhacks-corefour.cloudfunctions.net/api/report" method="post">
+    <form action="https://us-central1-sbhacks-corefour.cloudfunctions.net/api/report" enctype="multipart/form-data" method="post">
       USER ID <input type="text" name="user"/><br/>
       INCIDENT NAME <input type="text" name="name"/><br/>
       INCIDENT DESCRIPTION <input type="text" name="description"/><br/>
@@ -54,6 +54,7 @@
       INCIDENT LNG <input type="text" name="lng"/><br/>
       INCIDENT TIME <input type="text" name="time"/><br/>
       INCIDENT SEVERITY (haven't implemented this yet) <input type="text" name="severity"/><br/>
+      IMAGE <input type="file" name="image">
       <input type="submit" name="submit">
     </form>
   </body>
