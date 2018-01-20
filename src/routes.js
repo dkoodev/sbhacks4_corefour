@@ -7,13 +7,17 @@ router.use((req, res, next) => {
     next();
 });
 
+
+// Authentication
 // router.use('/api', firebaseMiddleware.auth);
 
 router.get('/', (req, res) => {
     // res.json({
     //     message: 'Home'
     // });
+    res.sendFile("~/github/sbhacks4_corefour/public/index.html");
 });
+
 
 router.get('/api/hello', (req, res) => {
     res.json({
