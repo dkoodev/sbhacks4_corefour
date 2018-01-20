@@ -3,6 +3,9 @@ const functions = require("firebase-functions")
 const cors = require("cors")
 const express = require("express")
 
+var bucket = require('./bucket');
+
+
 /* Express with CORS & automatic trailing '/' solution */
 const app = express()
 app.use(cors({ origin: true }))

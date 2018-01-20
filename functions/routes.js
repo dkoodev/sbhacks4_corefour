@@ -3,17 +3,13 @@ const router = express.Router();
 var firebase = require('firebase-admin');
 // const firebaseMiddleware = require('express-firebase-middleware');
 
-// Set the configuration for your app
-// Initialize Firebase
-var serviceAccount = require('./sbhacks-corefour-firebase-adminsdk-qict0-9ef440dd5c.json');
 
-firebase.initializeApp({
-  credential: firebase.credential.cert(serviceAccount),
-  databaseURL: 'https://sbhacks-corefour.firebaseio.com'
-});
 
-// Get a reference to the database service
-var database = firebase.database();
+
+
+// const storage = require('./database');
+
+
 
 router.use((req, res, next) => {
     next();
