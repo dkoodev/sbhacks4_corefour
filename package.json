@@ -1,0 +1,26 @@
+{
+  "name": "neighbor_watch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dkoodev/sbhacks4_corefour.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dkoodev/sbhacks4_corefour/issues"
+  },
+  "homepage": "https://github.com/dkoodev/sbhacks4_corefour#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "firebase": "^4.9.0",
+    "node": "^9.4.0",
+    "nodemon": "^1.14.11"
+  }
+}
