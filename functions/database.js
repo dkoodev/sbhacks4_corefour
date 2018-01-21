@@ -8,9 +8,6 @@ firebase.initializeApp({
   storageBucket: 'gs://sbhacks-corefour.appspot.com'
 });
 
-
 var db = firebase.database();
-
-
 
 module.exports = db;

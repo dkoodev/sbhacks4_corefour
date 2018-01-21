@@ -37,7 +37,7 @@ router.post('/report', (req, res)=>{
     // req.body.[name attribute of input tag] has the value
     function writeUserData(data) {
       // Create a new post reference with an auto-generated id
-      var reportListRef = db.ref('/');
+      var reportListRef = db.ref('/reports');
       var newReportRef = reportListRef.push();
       newReportRef.set({
           user: data.user,
