@@ -23,14 +23,23 @@ router.get('/test', (req, res) => {
   });
 });
 
-router.get('/sendText/:phoneNumber', (req, res)=>{
+router.get('/sendText/:phoneNumber/:message', (req, res)=>{
     var phoneNumber = req.params.phoneNumber;
+    var message = req.params.message;
     const twilio = require("./twilio");
-    twilio(phoneNumber, "hey dood");
+    twilio(phoneNumber, message);
 
     res.send("complete!!!");
 });
 
+router.get('/sendText/:phoneNumber', (req, res)=>{
+    var phoneNumber = req.params.phoneNumber;
+
+    const twilio = require("./twilio");
+    twilio(phoneNumber, "No Message");
+
+    res.send("complete!!!");
+});
 
 // POST: report
 router.post('/report', (req, res)=>{
