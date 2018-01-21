@@ -44,8 +44,6 @@ router.get('/sendText/:phoneNumber', (req, res)=>{
 
 router.get('/notifyAll/:message', (req, res) => {
     var message = req.params.message;
-    message += "\n REPLY STOP to unsubscribe!";
-
     var notifyAll = require('./notifyAll');
     notifyAll(message,undefined);
 
