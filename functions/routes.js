@@ -72,8 +72,12 @@ router.post('/report', (req, res)=>{
           severity: data.severity
       });
     }
-    writeUserData(req.body);
-    res.json({message: "Report submitted successfully!"})
+    if(!(severity != "1" && severity != "2" & severity != "3")) {
+      writeUserData(req.body);
+      res.json({message: "Report submitted successfully!"});
+    } else {
+      res.json({message: "Invalid severity value."})
+    }
 });
 
 module.exports = router;
