@@ -17,6 +17,25 @@ const functions = require("firebase-functions");
 const cors = require("cors");
 const express = require("express");
 
+var db = require("./database");
+var ref = db.ref("/reports");
+
+// Attach an asynchronous callback to read the data at our posts reference
+ref.on("child_added", function(snapshot) {
+    // console.log(snapshot.val());
+    // console.log(snapshot.val()[snapshot.val().length-1]);
+    snapshot.forEach(function(childSnapshot) {
+        var key = childSnapshot.key;
+        var childData = childSnapshot.val();
+        console.log("child key: " + key);
+        console.log("childData: " + childData);
+
+    });
+
+}, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+});
+
 
 /* Express with CORS & automatic trailing '/' solution */
 const app = express();
@@ -32,6 +51,8 @@ const api = functions.https.onRequest((request, response) => {
   }
   return app(request, response)
 });
+
+
 
 
 

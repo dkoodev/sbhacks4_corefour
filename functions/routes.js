@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 var firebase = require('firebase-admin');
 var db = require('./database');
-var lister = require('./notifyAll')
 // const firebaseMiddleware = require('express-firebase-middleware');
+
+
 
 router.use((req, res, next) => {
     next();
@@ -42,8 +43,13 @@ router.get('/sendText/:phoneNumber', (req, res)=>{
 });
 
 router.get('/notifyAll/:message', (req, res) => {
-  lister();
-  res.send("Your message has been broadcast!");
+    var message = req.params.message;
+    message += "\n REPLY STOP to unsubscribe!";
+
+    var notifyAll = require('./notifyAll');
+    notifyAll(message,undefined);
+
+    res.send("Your message has been broadcasted!");
 });
 
 // POST: report
