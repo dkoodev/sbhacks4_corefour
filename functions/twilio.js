@@ -6,4 +6,14 @@ var authToken = process.env.TWILIO_AUTHTOKEN;   // Your Auth Token from www.twil
 var twilio = require('twilio');
 var client = new twilio(accountSid, authToken);
 
-module.exports = client;
+sendText =  function sendTextMessage(phoneNumber, message){
+    console.log("Text sent! : " + message);
+    client.messages.create({
+        body: message,
+        to:     '+1' + phoneNumber,  // Text this number
+        from:   '+15104803154' // From a valid Twilio number
+    })
+    .then((message) => console.log(message.sid));
+}
+
+module.exports = sendText;

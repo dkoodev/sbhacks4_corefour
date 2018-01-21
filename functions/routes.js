@@ -23,6 +23,15 @@ router.get('/test', (req, res) => {
   });
 });
 
+router.get('/sendText/:phoneNumber', (req, res)=>{
+    var phoneNumber = req.params.phoneNumber;
+    const twilio = require("./twilio");
+    twilio(phoneNumber, "hey dood");
+
+    res.send("complete!!!");
+});
+
+
 // POST: report
 router.post('/report', (req, res)=>{
     let user = req.body.user;
