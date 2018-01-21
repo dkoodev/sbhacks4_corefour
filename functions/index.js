@@ -40,4 +40,4 @@ const api = functions.https.onRequest((request, response) => {
   return app(request, response)
 });
 
-module.exports = api
+module.exports = {api}
