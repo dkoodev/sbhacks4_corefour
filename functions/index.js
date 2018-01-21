@@ -16,17 +16,18 @@ console.log("-----------------------" + year + ":" + month + ":" + day + ":" + h
 const functions = require("firebase-functions")
 const cors = require("cors")
 const express = require("express")
+const twilio = require("./twilio")
 
-// var bucket = require('./bucket');
-//
-// // Download a file from your bucket.
-// bucket.file('smoky_house.jpg').download({
-//   destination: '/photos/zoo/giraffe.jpg'
-// }, function(err) {});
+twilio.messages.create({
+    body: 'Hello from Node',
+    to:     '+12134074484',  // Text this number
+    from:   '+15622225193' // From a valid Twilio number
+})
+.then((message) => console.log(message.sid));
 
 /* Express with CORS & automatic trailing '/' solution */
-const app = express()
-app.use(cors({ origin: true }))
+const app = express();
+app.use(cors({ origin: true }));
 
 const router = require('./routes');
 app.use('/', router);
@@ -37,8 +38,6 @@ const api = functions.https.onRequest((request, response) => {
     request.url = `/${request.url}` // prepend '/' to keep query params if any
   }
   return app(request, response)
-})
+});
 
-module.exports = {
-  api
-}
+module.exports = api
