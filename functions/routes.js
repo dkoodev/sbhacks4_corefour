@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 var firebase = require('firebase-admin');
 var db = require('./database');
+var lister = require('./notifyAll')
 // const firebaseMiddleware = require('express-firebase-middleware');
 
 router.use((req, res, next) => {
@@ -34,11 +35,15 @@ router.get('/sendText/:phoneNumber/:message', (req, res)=>{
 
 router.get('/sendText/:phoneNumber', (req, res)=>{
     var phoneNumber = req.params.phoneNumber;
-
     const twilio = require("./twilio");
     twilio(phoneNumber, "No Message");
 
     res.send("complete!!!");
+});
+
+router.get('/notifyAll/:message', (req, res) => {
+  lister();
+  res.send("Your message has been broadcast!");
 });
 
 // POST: report
