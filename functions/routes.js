@@ -76,7 +76,7 @@ router.post('/report', (req, res)=>{
           severity: data.severity
       });
     }
-    if(!(severity != "1" && severity != "2" & severity != "3")) {
+    if(!(severity != "1" && severity != "2" & severity != "3" & severity != "4")) {
       writeUserData(req.body);
       res.json({message: "Report submitted successfully!"});
     } else {
