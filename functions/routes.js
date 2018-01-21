@@ -50,7 +50,7 @@ router.post('/report', (req, res)=>{
       });
     }
     writeUserData(req.body);
-    res.send("Report submitted successfully!")
+    res.json({message: "Report submitted successfully!"})
 });
 
 module.exports = router;
